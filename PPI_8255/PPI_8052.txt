@@ -1,0 +1,67 @@
+
+module Chip_8052(
+    inout [7:0] PA,
+    inout [7:0] PB,
+    inout [7:0] PC,
+    input [7:0] D,
+    input [1:0] A,
+    input VCC,
+    input GND,
+    input RESET,
+    input CS,
+    input RD,
+    input WR
+    );
+	
+	 reg [7:0] OUT_PA;
+	 reg [7:0] OUT_PB;
+	 reg [7:0] OUT_PC;
+	 reg [7:0] OUT_D; 
+	 reg A_mode,B_mode,C_mode_Upper,C_mode_Lower,D_mode;
+	 integer x;
+	 //input mode is 0, output mode is 1
+	 
+	 assign PA = A_mode? OUT_PA : 8'bzzzzzzzz;
+	 assign PB = B_mode? OUT_PB : 8'bzzzzzzzz;
+	 assign PC[7:4] = C_mode_Upper? OUT_PC[7:4] : 4'bzzzz;
+	 assign PC[3:0] = C_mode_Lower? OUT_PC[3:0] : 4'bzzzz ;
+	 assign D  = D_mode? OUT_D  : 8'bzzzzzzzz;
+	 
+	 always @(D,A,RD,WR,CS,VCC,GND,RESET)
+	 begin 
+	 
+	 if(CS || RESET || GND || !VCC )
+	 begin
+	 A_mode<=0;
+	 B_mode<=0;
+	 D_mode<=0;
+	 C_mode_Upper<=0;
+	 C_mode_Lower<=0;
+	 
+	 end
+	 else begin
+	 
+	 case(A)
+	 0 : begin if(!RD) begin D_mode<=1; OUT_D<=PA; end  else begin D_mode<=0; OUT_PA<=D; end  end
+	 1 : begin if(!RD) begin D_mode<=1; OUT_D<=PB; end  else begin D_mode<=0; OUT_PB<=D; end  end
+	 2 : begin if(!RD) begin D_mode<=1; OUT_D<=PC; end  else begin D_mode<=0; OUT_PC<=D; end  end
+	 3 : begin  D_mode<=0; end
+	 endcase
+	 
+	 if(!D_mode && A[1]==1 && A[0]==1 && !WR && RD) begin
+	 if(D[7]==0) begin C_mode_Upper<=1; C_mode_Lower<=1; x=D[3:1]; OUT_PC[x]<=D[0]; end
+		else begin
+		A_mode<= ~D[4];
+		B_mode<= ~D[1];
+		C_mode_Lower<= ~D[0];
+		C_mode_Upper<= ~D[3];
+		end
+	 
+	 end 
+	 
+	 end
+	 
+	 end
+
+
+endmodule

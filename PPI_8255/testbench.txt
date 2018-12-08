@@ -1,0 +1,68 @@
+
+
+module tbhabd;
+
+	// Inputs
+	reg [1:0] A;
+	reg VCC;
+	reg GND;
+	reg RESET;
+	reg CS;
+	reg RD;
+	reg WR;
+	reg d_mode;
+	// Bidirs
+	wire [7:0] PA;
+	wire [7:0] PB;
+	wire [7:0] PC;
+	wire [7:0] D;
+	reg [7:0] out_d;
+	assign D = d_mode?out_d: 8'bz ;
+
+	// Instantiate the Unit Under Test (UUT)
+	Chip_8052 uut (
+		.PA(PA),
+		.PB(PB), 
+		.PC(PC), 
+		.D(D), 
+		.A(A), 
+		.VCC(VCC), 
+		.GND(GND), 
+		.RESET(RESET), 
+		.CS(CS), 
+		.RD(RD), 
+		.WR(WR)
+	);
+
+	initial begin
+		// Initialize Inputs
+		A =3;
+		d_mode=1;
+		out_d=0;
+		VCC = 1;
+		GND = 0;
+		RESET =1;
+		CS = 0;
+		RD = 1;
+		WR = 0;
+		#5
+		RESET=0;
+		#5
+		out_d = 8'b00000001;
+		#5
+		out_d = 8'b00000101;
+		#5
+		out_d= 8'b00001101;
+		
+		
+		
+
+		// Wait 100 ns for global reset to finish
+		#100;
+        
+		// Add stimulus here
+
+	end
+      
+endmodule
+
