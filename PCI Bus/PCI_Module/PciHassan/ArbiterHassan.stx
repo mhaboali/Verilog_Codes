@@ -1,16 +1,16 @@
 Release 14.7 - xst P.20131013 (nt)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
---> Parameter TMPDIR set to D:/mine/This_Semster/General Git_Repos/Verilog_Codes/PCI Bus/Arbiter_Module/Arbiter_Hassan/xst/projnav.tmp
+--> Parameter TMPDIR set to D:/mine/This_Semster/General Git_Repos/Verilog_Codes/PCI Bus/PCI_Module/PciHassan/xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.16 secs
+Total CPU time to Xst completion: 0.12 secs
  
---> Parameter xsthdpdir set to D:/mine/This_Semster/General Git_Repos/Verilog_Codes/PCI Bus/Arbiter_Module/Arbiter_Hassan/xst
+--> Parameter xsthdpdir set to D:/mine/This_Semster/General Git_Repos/Verilog_Codes/PCI Bus/PCI_Module/PciHassan/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.16 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Reading design: ArbiterHassan.prj
 
@@ -39,18 +39,12 @@ TABLE OF CONTENTS
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Analyzing Verilog file "D:\mine\This_Semster\General Git_Repos\Verilog_Codes\PCI Bus\Arbiter_Module\Arbiter_Hassan\ArbiterHassan.v" into library work
-Parsing module <ArbiterHassan>.
-
-
-Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 7.37 secs
- 
+ERROR:Xst:2369 - Empty project file "\mine\This_Semster\General Git_Repos\Verilog_Codes\PCI Bus\PCI_Module\PciHassan\ArbiterHassan.prj"
 --> 
 
-Total memory usage is 279276 kilobytes
+Total memory usage is 278828 kilobytes
 
-Number of errors   :    0 (   0 filtered)
+Number of errors   :    1 (   0 filtered)
 Number of warnings :    0 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

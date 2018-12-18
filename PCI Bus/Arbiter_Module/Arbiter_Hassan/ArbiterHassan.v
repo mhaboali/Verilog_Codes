@@ -21,22 +21,36 @@
 module ArbiterHassan(
 	input 		 			clk,
 	input 					rst,
-	input 					FRAME,
-	input						IRDY,
-	input						TRDY,
-	input						STOP,
-	input 					DEVSEL,
 	input[7:0] 				REQ,
 	output reg [7:0]		GNT
 	 );
-	 always @(negedge rst) begin
-		//Reset All portlist
+	 
+	 //for handling the value of REQ wires
+	 reg[7:0] 				req;
+	 initial
+		req=REQ;
+	 
+	 always @(negedge rst) 
+	 begin
+		//Reset All output
+		GNT   <= 	8'b1111_1111;
 	 end
-	 always @(posedge clk) begin
-		//Read All devices' requests
-		
-		//Handle these requests by priority algorithm
-		
+	 
+	 always @(posedge clk) 
+	 begin
+		//check if there's granted device or not
+		if(GNT == 8'd255) 
+		begin :IF
+			//Read All devices' requests
+			integer i ;
+			i=32'd0;
+			while(req[0]==1) 
+			begin
+				req = req>>1;
+				i = i+1;
+			end
+			GNT[i] <= 0;
+		end:IF
 		//Set Corresponding GNT
 		
 	 end

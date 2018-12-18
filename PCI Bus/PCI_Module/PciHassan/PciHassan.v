@@ -25,31 +25,37 @@ module PciHassan(
 	input						Gnd,
 	input						clk,
 	input						rst,
-	input[3:0]				CMD_BE,
+	input						FRAME,
+	input						TRDY,
+	input 					IRDY,
+	input						DEVSEL,
+	input[1:0]				CMD_BE,
 	inout[31:0]				AD
     );
 	 reg[31:0]				AD_reg;
-	 
+	 //inputs to arbiter module
+	 reg [7:0] 				REQ,GNT;
+	 reg 						RST;
 	 //Continous Assignment of AD in case IRDY is asserted
-	 assign AD = AD_reg;
-	 initial begin
-		//declare Arbiter module portlist
+	 //command bus = 0 for master read and 1 for master write
+	 assign AD =(CMD_BE == 0)? AD_reg:8'bzzzz_zzzz;
+	 assign rst = (RST==0)? 0:1;
+	 //Instanciate Arbiter object
+	 ArbiterHassan(clk,rst,REQ,GNT);
+	 always @(Vcc || Gnd )
+		RST = 0;
 		
-		//Instanciate Arbiter object
-		//ArbiterHassan arbt();
-	 end
-	 //Check which device has GNT w.r.t priority
-	 always @ (posedge clk) begin
+
+	//Check which device has GNT w.r.t priority
+	 //always @ (posedge clk) begin
 		//check assertion of GNT
-			//Assert the FRAME signal
-			//Set device's Address
-	 end
-	 always @ (posedge clk) begin
+	 //end
+	 //always @ (posedge clk) begin
 		//check FRAME Signal
 			//Deassert FRAME and GNT
 			//Assert IRDY and TRDY,DEVSEL
 			//Set Data Frame
-	 end
+	 //end
 
 
 endmodule

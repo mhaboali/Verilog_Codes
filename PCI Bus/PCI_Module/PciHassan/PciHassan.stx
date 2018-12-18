@@ -1,18 +1,18 @@
 Release 14.7 - xst P.20131013 (nt)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
---> Parameter TMPDIR set to D:/mine/This_Semster/General Git_Repos/Verilog_Codes/PCI Bus/Arbiter_Module/Arbiter_Hassan/xst/projnav.tmp
+--> Parameter TMPDIR set to D:/mine/This_Semster/General Git_Repos/Verilog_Codes/PCI Bus/PCI_Module/PciHassan/xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.16 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.15 secs
  
---> Parameter xsthdpdir set to D:/mine/This_Semster/General Git_Repos/Verilog_Codes/PCI Bus/Arbiter_Module/Arbiter_Hassan/xst
+--> Parameter xsthdpdir set to D:/mine/This_Semster/General Git_Repos/Verilog_Codes/PCI Bus/PCI_Module/PciHassan/xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.16 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.15 secs
  
---> Reading design: ArbiterHassan.prj
+--> Reading design: PciHassan.prj
 
 TABLE OF CONTENTS
   1) Synthesis Options Summary
@@ -39,16 +39,18 @@ TABLE OF CONTENTS
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Analyzing Verilog file "D:\mine\This_Semster\General Git_Repos\Verilog_Codes\PCI Bus\Arbiter_Module\Arbiter_Hassan\ArbiterHassan.v" into library work
+Analyzing Verilog file "D:\mine\This_Semster\General Git_Repos\Verilog_Codes\PCI Bus\PCI_Module\PciHassan\PciHassan.v" into library work
+Parsing verilog file "..\..\Arbiter_Module\Arbiter_Hassan\ArbiterHassan.v" included at line 21.
 Parsing module <ArbiterHassan>.
+Parsing module <PciHassan>.
 
 
 Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 7.37 secs
+Total CPU time to Xst completion: 6.74 secs
  
 --> 
 
-Total memory usage is 279276 kilobytes
+Total memory usage is 278316 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    0 (   0 filtered)
